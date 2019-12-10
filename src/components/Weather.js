@@ -1,16 +1,16 @@
 import React from "react";
 
-const Weather = (props) => {
-  
+const Weather = props => {
   return (
     <div>
       <h2>{props.city.name}</h2>
       <i>icon</i>
       <div>
-        <span>max</span>
-        <span>min</span>
+        <p>min {props.main.temp_min}</p>
+        <p>max {props.main.temp_max}</p>
+        <p>sunset: {props.sunset}</p>
+        <p>sunrise: {props.sunrise}</p>
       </div>
-
     </div>
   );
 };
