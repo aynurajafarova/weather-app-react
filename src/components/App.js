@@ -1,10 +1,11 @@
+import "../assets/css/main.css";
 import React, { Component } from "react";
 import Weather from "./Weather";
 import SearchBar from "./SearchBar";
 import OpenWeatherMap from "../apis/OpenWeatherMap";
 
 class App extends Component {
-  state = { city: "", main: "", sunset: "", sunrise: "" };
+  state = { city: "", main: "", sunset: "", sunrise: "", description: "" };
 
   onCitySubmit = async city => {
     // console.log(city);
@@ -36,20 +37,20 @@ class App extends Component {
       city: response.data,
       main: response.data.main,
       sunset: sunset_date,
-      sunrise: sunrise_date
+      sunrise: sunrise_date,
+      description: response.data.weather[0].description
     });
-
-    console.log(response.data);
   };
   render() {
     return (
-      <div>
+      <div className="container">
         <SearchBar onFormSubmit={this.onCitySubmit} />
         <Weather
           city={this.state.city}
           main={this.state.main}
           sunset={this.state.sunset}
           sunrise={this.state.sunrise}
+          description={this.state.description}
         />
       </div>
     );

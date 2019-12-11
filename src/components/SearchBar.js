@@ -9,20 +9,25 @@ class SearchBar extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
+  };
 
+  onButtonClick = () => {
     this.props.onFormSubmit(this.state.cityName);
   };
 
   render() {
     return (
-      <div>
+      <div className="searchBar">
         <form onSubmit={this.onFormSubmit}>
-          <label>Country search</label>
           <input
+            className="search-input"
             type="text"
             value={this.state.cityName}
             onChange={this.onInputChange}
           />
+          <button className="btn-search" onClick={this.onButtonClick}>
+            Search
+          </button>
         </form>
       </div>
     );
